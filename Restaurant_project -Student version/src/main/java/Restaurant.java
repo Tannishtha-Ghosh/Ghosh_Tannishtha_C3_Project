@@ -63,4 +63,9 @@ public class Restaurant {
         return name;
     }
 
+    public int calculateOrderValue() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'calculateOrderValue'");
+    }
+
 }

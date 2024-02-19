@@ -42,6 +42,15 @@ class RestaurantTest {
 
     }
 
+    @Test
+    public void calculate_order_value_should_return_zero_for_empty_order() {
+        // Calculate order value for an empty order
+        int orderValue = restaurant.calculateOrderValue();
+
+        // Verify that the order value is zero for an empty order
+        assertEquals(0, orderValue);
+    }
+
     //<<<<<<<<<<<<<<<<<<<<<<<<<OPEN/CLOSED>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
