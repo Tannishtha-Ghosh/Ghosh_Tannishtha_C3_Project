@@ -6,6 +6,7 @@ public class Item {
         this.name = name;
         this.price = price;
     }
+    
 
     public String getName() {
         return name;
@@ -16,5 +17,10 @@ public class Item {
                 + price
                 + "\n"
                 ;
+    }
+
+
+    public int getPrice() {
+        return price;
     }
 }

@@ -44,12 +44,30 @@ class RestaurantTest {
 
     @Test
     public void calculate_order_value_should_return_zero_for_empty_order() {
-        // Calculate order value for an empty order
         int orderValue = restaurant.calculateOrderValue();
-
-        // Verify that the order value is zero for an empty order
         assertEquals(0, orderValue);
     }
+
+    @Test
+    public void calculateOrderValue_should_return_correct_value_for_single_item() {
+        restaurant.addToOrder("Sweet corn soup"); // Price: 119
+        assertEquals(119, restaurant.calculateOrderValue());
+    }
+
+    @Test
+    public void calculateOrderValue_should_return_correct_value_for_multiple_items() {
+        restaurant.addToOrder("Sweet corn soup"); // Price: 119
+        restaurant.addToOrder("Vegetable lasagne"); // Price: 269
+        assertEquals(119 + 269, restaurant.calculateOrderValue());
+    }
+
+    @Test
+    public void calculateOrderValue_should_ignore_items_not_in_menu() {
+        restaurant.addToOrder("Sweet corn soup"); // Price: 119
+        restaurant.addToOrder("Invalid item"); // Not in menu
+        assertEquals(119, restaurant.calculateOrderValue());
+    }
+
 
     //<<<<<<<<<<<<<<<<<<<<<<<<<OPEN/CLOSED>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 

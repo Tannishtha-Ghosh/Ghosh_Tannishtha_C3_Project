@@ -9,6 +9,7 @@ public class Restaurant {
     public LocalTime openingTime;
     public LocalTime closingTime;
     private List<Item> menu = new ArrayList<Item>();
+    private List<String> order = new ArrayList<String>();
 
     public Restaurant(String name, String location, LocalTime openingTime, LocalTime closingTime) {
         this.name = name;
@@ -29,6 +30,7 @@ public class Restaurant {
         //DELETE ABOVE RETURN STATEMENT AND WRITE CODE HERE
     }
 
+    //To find an item by name in the menu
     private Item findItemByName(String itemName){
         for(Item item: menu) {
             if(item.getName().equals(itemName))
@@ -42,6 +44,23 @@ public class Restaurant {
         menu.add(newItem);
     }
     
+    //
+    public void addToOrder(String itemName) {
+        order.add(itemName);
+    }
+
+    // Method to calculate the total order value
+    public int calculateOrderValue() {
+        int totalOrderValue = 0;
+        for (String itemName : order) {
+            Item item = findItemByName(itemName);
+            if (item != null) {
+                totalOrderValue += item.getPrice();
+            }
+        }
+        return totalOrderValue;
+    }
+
     public void removeFromMenu(String itemName) throws itemNotFoundException {
 
         Item itemToBeRemoved = findItemByName(itemName);
@@ -61,11 +80,6 @@ public class Restaurant {
 
     public String getName() {
         return name;
-    }
-
-    public int calculateOrderValue() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'calculateOrderValue'");
     }
 
 }
